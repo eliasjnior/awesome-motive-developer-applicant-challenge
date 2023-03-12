@@ -19,11 +19,11 @@ Or you can execute a script to install WordPress with the following information,
 * WordPress title: `WordPress Demo`
 
 ```bash
-docker compose run wordpress-cli wp core install --url=wordpress.localhost --title="WordPress Demo" --admin_name=wordpress --admin_password=wordpress --admin_email=you@example.co
+docker compose run --rm wordpress-cli wp core install --url=wordpress.localhost --title="WordPress Demo" --admin_name=wordpress --admin_password=wordpress --admin_email=you@example.co
 ```
 
 Another recommended script is to setup permalinks:
 
 ```
-docker compose run wordpress-cli wp rewrite structure '/%postname%/'
+docker compose run --rm wordpress-cli wp rewrite structure '/%postname%/'
 ```

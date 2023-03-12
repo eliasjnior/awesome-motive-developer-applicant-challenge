@@ -34,6 +34,7 @@ services:
       - wordpress
     volumes:
       - wordpress:/var/www/html
+      - ./:/var/www/html/wp-content/plugins/developer-applicant-challenge
 
   phpmyadmin:
     container_name: site-phpmyadmin
