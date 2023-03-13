@@ -103,4 +103,4 @@ const Edit = ({
   )
 }
 
-export default compose(withReactQuery)(Edit)
+export default compose(withReactQuery)(Edit as any)
