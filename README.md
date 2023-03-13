@@ -4,7 +4,7 @@ This is the plugin solution for the [Awesome Motive Developer Applicant Challeng
 
 ## Start the project
 
-The following command will start the Docker for the project:
+The following command will start the Docker for the project and check on [http://wordpress.localhost](http://wordpress.localhost) to the page be available:
 
 ```bash
 docker compose up

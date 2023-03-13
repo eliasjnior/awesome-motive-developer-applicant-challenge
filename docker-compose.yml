@@ -35,6 +35,8 @@ services:
     volumes:
       - ./wp:/var/www/html
       - ./:/var/www/html/wp-content/plugins/developer-applicant-challenge
+    profiles:
+      - donotstart
 
   phpmyadmin:
     container_name: site-phpmyadmin
