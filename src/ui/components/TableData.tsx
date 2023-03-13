@@ -2,7 +2,7 @@ import { forwardRef, useImperativeHandle } from 'react'
 import { useQuery } from 'react-query'
 import getTableDataService from '../services/get-table-data'
 import map from 'lodash/map'
-import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+import format from 'date-fns/format'
 
 export interface TableDataHandler {
   refreshData: () => void
@@ -53,7 +53,7 @@ const TableData = forwardRef((_, ref) => {
               <td className="column-primary">{row.lname}</td>
               <td className="column-primary">{row.email}</td>
               <td className="column-primary">
-                {formatDistanceToNow(row.date * 1000)}
+                {format(row.date * 1000, 'MM/dd/yyyy')}
               </td>
             </tr>
           ))}

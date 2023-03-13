@@ -1,4 +1,4 @@
-import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+import format from 'date-fns/format'
 import { type TableData } from '../services/get-table-data'
 import map from 'lodash/map'
 
@@ -42,7 +42,7 @@ const PublicTableData = ({
               )}
               {!hiddenColumns.includes('Date') && (
                 <td className="column-primary">
-                  {formatDistanceToNow(row.date * 1000)}
+                  {format(row.date * 1000, 'MM/dd/yyyy')}
                 </td>
               )}
             </tr>
