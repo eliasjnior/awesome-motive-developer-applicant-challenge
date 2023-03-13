@@ -6,9 +6,9 @@
 defined('ABSPATH') || exit;
 
 define('ADC_PLUGIN_PATH', dirname(__FILE__));
-define('ADC_TEXTDOMAIN', 'adc');
+define('ADC_TEXTDOMAIN', 'developer-applicant-challenge');
 
+require ADC_PLUGIN_PATH . '/vendor/autoload.php';
 
-include ADC_PLUGIN_PATH . '/includes/rest-api.php';
-include ADC_PLUGIN_PATH . '/includes/cli.php';
-include ADC_PLUGIN_PATH . '/includes/admin-view.php';
+new \DeveloperApplicantChallenge\Core\Initialize();
+

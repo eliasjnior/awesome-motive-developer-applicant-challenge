@@ -1,0 +1,17 @@
+{
+    "name": "eliasjnior/developer-applicant-challenge",
+    "autoload": {
+        "psr-4": {
+            "DeveloperApplicantChallenge\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Elias Júnior",
+            "email": "me@eliasjr.dev"
+        }
+    ],
+    "require-dev": {
+        "php-stubs/wp-cli-stubs": "^2.7"
+    }
+}
