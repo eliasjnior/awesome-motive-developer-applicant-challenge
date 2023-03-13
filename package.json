@@ -6,7 +6,7 @@
   "author": "Elias Júnior <me@eliasjr.dev>",
   "license": "MIT",
   "scripts": {
-    "build": "yarn build:ui && yarn build:blocks",
+    "build": "yarn build:blocks && yarn build:ui",
     "build:ui": "tsc && vite build",
     "build:blocks": "wp-scripts build --output-path=dist",
     "dev": "concurrently \"yarn dev:ui\" \"yarn dev:blocks\"",
