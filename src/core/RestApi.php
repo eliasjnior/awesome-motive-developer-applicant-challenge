@@ -41,15 +41,15 @@ class RestApi implements Api {
     $response = $this->request->get('https://miusage.com/v1/challenge/1/');
   
     if($this->request->isError($response)) {
-      return new WP_Error('internal_error', 'Internal error', array('status' => 500));
+      return new \WP_Error('internal_error', 'Internal error', array('status' => 500));
     }
   
     try {
       $this->cache->setCache($response);
   
       return $response;
-    } catch(Exception $e) {
-      return new WP_Error('internal_error', 'Internal error', array('status' => 500));
+    } catch(\Exception $e) {
+      return new \WP_Error('internal_error', 'Internal error', array('status' => 500));
     }
   }
 }
