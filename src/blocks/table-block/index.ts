@@ -7,8 +7,8 @@ import Save from './save'
 import metadata from './block.json'
 
 registerBlockType(metadata.name, {
-  edit: Edit,
-  save: Save,
+  edit: Edit as any,
+  save: Save as any,
   title: metadata.title,
   category: metadata.category,
   attributes: {}

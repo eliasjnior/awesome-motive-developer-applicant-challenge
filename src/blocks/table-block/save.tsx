@@ -1,12 +1,9 @@
 import { __ } from '@wordpress/i18n'
 import { useBlockProps } from '@wordpress/block-editor'
 
-const Save = () => {
-  return (
-    <p {...useBlockProps.save()}>
-      {__('Awesome Motive', 'developer-applicant-challenge')}
-    </p>
-  )
+const Save = (props) => {
+  console.log('props', props)
+  return <p {...useBlockProps.save()}>Hello World</p>
 }
 
 export default Save

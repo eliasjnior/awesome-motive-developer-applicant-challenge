@@ -24,10 +24,15 @@ class RestApi implements Api {
     add_action( 'rest_api_init', array($this, 'registerRoutes') );
   }
 
+  public function getMiusageDataPermission() {
+    return true;
+  }
+
   public function registerRoutes() {
     register_rest_route( $this->endpointPrefix, '/table', array(
       'methods' => 'GET',
       'callback' => array($this, 'getMiusageData'),
+      'permission_callback' => array($this, 'getMiusageDataPermission'),
     ) );
   }
 
