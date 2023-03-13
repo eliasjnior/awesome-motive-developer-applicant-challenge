@@ -19,7 +19,8 @@ export interface TableData {
 
 const getTableDataService = async (): Promise<TableData> => {
   const { data } = await axios.get(
-    'http://wordpress.localhost/wp-json/developer-applicant-challenge/v1/table'
+    // TODO: add correct environment to this url
+    '/wp-json/developer-applicant-challenge/v1/table'
   )
 
   return data as TableData
