@@ -1,3 +1,3 @@
-export interface ReactHoc {
-  <P>(WrappedComponent: React.ComponentType<P>): React.FC<P>;
-}
+export type ReactHoc = <P>(
+  WrappedComponent: React.ComponentType<P>
+) => React.FC<P>
