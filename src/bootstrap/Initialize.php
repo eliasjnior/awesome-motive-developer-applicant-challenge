@@ -2,12 +2,13 @@
 
 namespace DeveloperApplicantChallenge\Bootstrap;
 
-use DeveloperApplicantChallenge\Core\AdminPage;
 use DeveloperApplicantChallenge\Interfaces\Api;
 use DeveloperApplicantChallenge\Interfaces\Cache;
 use DeveloperApplicantChallenge\Interfaces\Request;
 use DeveloperApplicantChallenge\Interfaces\Cli;
 
+use DeveloperApplicantChallenge\Core\AdminPage;
+use DeveloperApplicantChallenge\Core\GutenbergBlocks;
 use DeveloperApplicantChallenge\Core\TransientCache;
 use DeveloperApplicantChallenge\Core\HttpRequest;
 use DeveloperApplicantChallenge\Core\RestApi;
@@ -34,6 +35,7 @@ class Initialize {
     );
 
     new AdminPage('developer-applicant-challenge-admin-page');
+    new GutenbergBlocks();
 
     add_action( 'cli_init', function() {
       new WPCli($this->cache);

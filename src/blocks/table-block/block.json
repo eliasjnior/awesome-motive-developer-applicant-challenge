@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "developer-applicant-challenge/table-block",
+  "version": "0.1.0",
+  "title": "Table Block",
+  "category": "widgets",
+  "icon": "smiley",
+  "description": "Example block for rendering the table.",
+  "supports": {
+    "html": false
+  },
+  "textdomain": "developer-applicant-challenge",
+  "editorScript": "file:./index.ts",
+  "editorStyle": "file:./index.scss",
+  "style": "file:./style-index.scss"
+}

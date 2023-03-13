@@ -35,6 +35,6 @@ class AdminPage {
       return;
     }
 
-    wp_enqueue_script( 'adc-admin-script', plugin_dir_url(ADC_PLUGIN_FILE_PATH) . 'dist/main.umd.js', array(), '1.0.0', true );
+    wp_enqueue_script( 'adc-admin-script', plugin_dir_url(ADC_PLUGIN_FILE_PATH) . 'dist/ui/main.umd.js', array(), '1.0.0', true );
   }
 }

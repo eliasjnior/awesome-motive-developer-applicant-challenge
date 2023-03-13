@@ -9,7 +9,8 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/ui/main.tsx'),
       name: 'Main',
       fileName: 'main',
-    }
+    },
+    outDir: resolve(__dirname, 'dist/ui'),
   },
   define: {
     'process.env': {},
