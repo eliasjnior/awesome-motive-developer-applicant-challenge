@@ -1,6 +1,6 @@
 <?php
 
-namespace DeveloperApplicantChallenge\Core;
+namespace DeveloperApplicantChallenge\Bootstrap;
 
 use DeveloperApplicantChallenge\Interfaces\Api;
 use DeveloperApplicantChallenge\Interfaces\Cache;
@@ -31,7 +31,10 @@ class Initialize {
       $this->cache,
       $this->endpointPrefix
     );
-    $this->cli = new WPCli($this->cache);
+
+    add_action( 'cli_init', function() {
+      new WPCli($this->cache);
+    } );
   }
 
 }

@@ -10,5 +10,5 @@ define('ADC_TEXTDOMAIN', 'developer-applicant-challenge');
 
 require ADC_PLUGIN_PATH . '/vendor/autoload.php';
 
-new \DeveloperApplicantChallenge\Core\Initialize();
+new \DeveloperApplicantChallenge\Bootstrap\Initialize();
 
