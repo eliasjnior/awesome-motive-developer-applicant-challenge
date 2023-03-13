@@ -2,6 +2,7 @@
 
 namespace DeveloperApplicantChallenge\Bootstrap;
 
+use DeveloperApplicantChallenge\Core\AdminPage;
 use DeveloperApplicantChallenge\Interfaces\Api;
 use DeveloperApplicantChallenge\Interfaces\Cache;
 use DeveloperApplicantChallenge\Interfaces\Request;
@@ -31,6 +32,8 @@ class Initialize {
       $this->cache,
       $this->endpointPrefix
     );
+
+    new AdminPage('developer-applicant-challenge-admin-page');
 
     add_action( 'cli_init', function() {
       new WPCli($this->cache);

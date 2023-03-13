@@ -9,3 +9,9 @@ docker compose run --rm wordpress-cli wp plugin activate developer-applicant-cha
 
 # Delete plugins
 docker compose run --rm wordpress-cli wp plugin delete akismet hello
+
+# Install dependencies
+composer install
+
+# Build assets
+yarn build

@@ -6,6 +6,7 @@
 defined('ABSPATH') || exit;
 
 define('ADC_PLUGIN_PATH', dirname(__FILE__));
+define('ADC_PLUGIN_FILE_PATH', __FILE__);
 define('ADC_TEXTDOMAIN', 'developer-applicant-challenge');
 
 require ADC_PLUGIN_PATH . '/vendor/autoload.php';
