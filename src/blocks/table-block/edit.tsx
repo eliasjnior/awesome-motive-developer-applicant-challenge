@@ -1,52 +1,104 @@
-import { __ } from '@wordpress/i18n'
 import { useBlockProps } from '@wordpress/block-editor'
 
-import TableData, { TableDataHandler } from '../../ui/components/TableData'
 import withReactQuery from '../../ui/hocs/with-react-query'
 import { compose } from 'recompose'
-import { useRef } from 'react'
 import Button from '../../ui/components/Button'
-import { BlockEditProps } from '@wordpress/blocks'
-import produce from 'immer'
-import pull from 'lodash/pull'
+import { type BlockEditProps } from '@wordpress/blocks'
+import getTableDataService, {
+  type TableData as ITableData
+} from '../../ui/services/get-table-data'
+import PublicTableData from '../../ui/components/PublicTableData'
+import { useQuery } from 'react-query'
 
 import './editor.scss'
 
 const Edit = ({
+  isSelected,
   setAttributes,
   attributes
 }: BlockEditProps<{
-  hiddenColumns?: Array<string>
+  hiddenColumns?: string[]
+  data?: ITableData
 }>) => {
-  const tableDataRef = useRef<TableDataHandler>(null)
+  const onChangeHiddenColumns: React.ChangeEventHandler<HTMLSelectElement> = (
+    event
+  ) => {
+    const selectedOptions = []
 
-  const onRefresh = () => {
-    tableDataRef.current?.refreshData()
-  }
-
-  const onChangeHiddenColumns = (value: string, checked: boolean) => {
-    const hiddenColumns = produce(attributes.hiddenColumns || [], (draft) => {
-      if (checked) {
-        draft.push(value)
-      } else {
-        pull(draft, value)
-      }
-    })
+    for (const option of event.target.selectedOptions) {
+      selectedOptions.push(option.value)
+    }
 
     setAttributes({
-      hiddenColumns
+      hiddenColumns: selectedOptions
     })
+  }
+
+  const { isFetching, isLoading, isError, refetch } = useQuery(
+    'getTableData',
+    getTableDataService,
+    {
+      initialData: attributes.data,
+      onSuccess: (data) => {
+        setAttributes({
+          data
+        })
+      }
+    }
+  )
+
+  const onRefresh = () => {
+    refetch()
+  }
+
+  const onResetHiddenColumns = () => {
+    setAttributes({
+      hiddenColumns: []
+    })
+  }
+
+  if (isLoading) {
+    return <p {...useBlockProps()}>Loading...</p>
+  }
+
+  if (!attributes.data || isError) {
+    return <p {...useBlockProps()}>No data...</p>
   }
 
   return (
     <p {...useBlockProps()}>
-      <Button onClick={onRefresh}>Refresh data</Button>
-      <TableData
-        ref={tableDataRef}
+      <PublicTableData
+        data={attributes.data}
         hiddenColumns={attributes.hiddenColumns}
-        onChangeHiddenColumns={onChangeHiddenColumns}
-        isHeaderEditable
       />
+      {isSelected && (
+        <>
+          <div>
+            <p>Hidden columns</p>
+            <select
+              multiple
+              onChange={onChangeHiddenColumns}
+              style={{
+                maxWidth: '100%',
+                width: '100%'
+              }}>
+              {attributes.data?.data.headers.map((header) => {
+                return (
+                  <option
+                    key={header}
+                    value={header}
+                    selected={attributes.hiddenColumns?.includes(header)}>
+                    {header}
+                  </option>
+                )
+              })}
+            </select>
+            <Button onClick={onResetHiddenColumns}>Reset hidden columns</Button>
+          </div>
+          <Button onClick={onRefresh}>Refresh data</Button>
+          {isFetching && <p>Refreshing...</p>}
+        </>
+      )}
     </p>
   )
 }

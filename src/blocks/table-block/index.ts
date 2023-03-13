@@ -11,5 +11,13 @@ registerBlockType(metadata.name, {
   save: Save as any,
   title: metadata.title,
   category: metadata.category,
-  attributes: {}
+  attributes: {
+    data: {
+      type: 'object'
+    },
+    hiddenColumns: {
+      type: 'array',
+      default: []
+    }
+  }
 })
