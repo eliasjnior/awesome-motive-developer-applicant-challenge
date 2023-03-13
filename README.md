@@ -2,15 +2,23 @@
 
 This is the plugin solution for the [Awesome Motive Developer Applicant Challenge](https://awesomemotive.com/developer-applicant-challenge/).
 
+## Start the project
+
+The following command will start the Docker for the project:
+
+```bash
+docker compose up
+```
+
 ## Initial setup
 
-After running `docker-compose up`, you can run the initial setup script by running:
+After start the project, run the initial setup script by executing:
 
 ```bash
 ./initial-setup.sh
 ```
 
-Or you can execute a script to install WordPress with the following information, or edit as you want:
+This will install WordPress with the following information:
 
 * Admin username: `wordpress`
 * Admin password: `wordpress`
@@ -18,12 +26,14 @@ Or you can execute a script to install WordPress with the following information,
 * WordPress URL: `http://wordpress.localhost`
 * WordPress title: `WordPress Demo`
 
-```bash
-docker compose run --rm wordpress-cli wp core install --url=wordpress.localhost --title="WordPress Demo" --admin_name=wordpress --admin_password=wordpress --admin_email=you@example.co
-```
+## CLI Commands
 
-Another recommended script is to setup permalinks:
+The WP CLI commands available are:
+
+### Clear cache
+
+To clear the transient cache that is used in the API:
 
 ```
-docker compose run --rm wordpress-cli wp rewrite structure '/%postname%/'
+docker compose run --rm wordpress-cli wp clear cache
 ```
